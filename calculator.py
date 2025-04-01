@@ -2,8 +2,6 @@ import tkinter as tk
 from tkinter import messagebox
 from updater import check_and_update
 
-CURRENT_VERSION = "1.0"
-
 def on_button_click(value):
     entry.insert(tk.END, value)
 
@@ -21,7 +19,7 @@ def clear():
 
 def check_for_updates():
     messagebox.showinfo("Update Check", "Checking for updates...")
-    check_and_update(CURRENT_VERSION)
+    check_and_update()
 
 root = tk.Tk()
 root.title("Calculator")

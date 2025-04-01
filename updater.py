@@ -34,8 +34,9 @@ def restart_program():
         subprocess.Popen(["calculator.exe"])
         sys.exit()
 
-def check_and_update(current_version):
+def check_and_update():
     """Check for an update and apply if available."""
+    current_version = get_current_version()
     latest_version = get_latest_version()
     if latest_version and latest_version > current_version:
         print(f"New version {latest_version} available! Updating...")
@@ -43,3 +44,10 @@ def check_and_update(current_version):
     else:
         print("No updates available.")
 
+def get_current_version():
+    """Get the current version from a local file or hardcode it."""
+    try:
+        with open("current_version.txt", "r") as file:
+            return file.read().strip()
+    except FileNotFoundError:
+        return "0.0"

@@ -40,10 +40,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN  }}
 
-      - name: Update version file
+      - name: Update version files
         run: |
           echo "Generated version: ${{ env.VERSION }}"
+          if [ -f latest_version.txt ]; then
+            mv latest_version.txt current_version.txt
+          fi
           echo "${{ env.VERSION }}" > latest_version.txt
+
+      - name: Commit updated version files
+        run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
           git add latest_version.txt
