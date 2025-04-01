@@ -28,8 +28,8 @@ jobs:
         id: get_version
         run: |
           $VERSION = Get-Date -Format "yyyyMMddHHmm"
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo "Generated version: $VERSION"
+          echo "VERSION=$VERSION" >> $env:GITHUB_ENV
+          echo "Generated version: ${{ env.VERSION }}"
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
@@ -42,7 +42,7 @@ jobs:
 
       - name: Update version file
         run: |
-          echo "Generated version: $VERSION"
+          echo "Generated version: ${{ env.VERSION }}"
           echo "${{ env.VERSION }}" > latest_version.txt
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
