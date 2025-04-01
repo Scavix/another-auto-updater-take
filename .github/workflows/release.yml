@@ -27,7 +27,7 @@ jobs:
       - name: Get Version
         id: get_version
         run: |
-          VERSION=$(date +%Y%m%d%H%M)  # Use a timestamp as the version number
+          $VERSION = Get-Date -Format "yyyyMMddHHmm"
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "Generated version: $VERSION"
 
