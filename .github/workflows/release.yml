@@ -42,6 +42,7 @@ jobs:
 
       - name: Update version file
         run: |
+          echo "Generated version: $VERSION"
           echo "${{ env.VERSION }}" > latest_version.txt
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
