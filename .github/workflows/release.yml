@@ -32,16 +32,16 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: dist/calculator.exe
-          tag_name: v${VERSION}
-          body: "New update released! Version ${VERSION}"
+          tag_name: v${{ env.VERSION }}
+          body: "New update released! Version ${{ env.VERSION }}"
         env:
-          GITHUB_TOKEN: ${secrets.PERSONAL_ACCESS_TOKEN}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN  }}
 
       - name: Update version file
         run: |
-          echo "${VERSION}" > latest_version.txt
+          echo "${{ env.VERSION }}" > latest_version.txt
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
           git add latest_version.txt
-          git commit -m "Update version to ${VERSION}"
+          git commit -m "Update version to ${{ env.VERSION }}"
           git push
