@@ -3,8 +3,6 @@ from tkinter import messagebox
 from updater import check_and_update
 
 CURRENT_VERSION = "1.0"
-VERSION_URL = "https://yourserver.com/latest_version.txt"
-UPDATE_URL = "https://yourserver.com/latest_update.zip"
 
 def on_button_click(value):
     entry.insert(tk.END, value)
@@ -23,7 +21,7 @@ def clear():
 
 def check_for_updates():
     messagebox.showinfo("Update Check", "Checking for updates...")
-    check_and_update(CURRENT_VERSION, VERSION_URL, UPDATE_URL)
+    check_and_update(CURRENT_VERSION)
 
 root = tk.Tk()
 root.title("Calculator")

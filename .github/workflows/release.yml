@@ -33,9 +33,9 @@ jobs:
         with:
           files: dist/calculator.exe
           tag_name: v${VERSION}
-          body: "New update released! Version ${VERSION }"
+          body: "New update released! Version ${VERSION}"
         env:
-          GITHUB_TOKEN: ${secrets.GITHUB_TOKEN}
+          GITHUB_TOKEN: ${secrets.PERSONAL_ACCESS_TOKEN}
 
       - name: Update version file
         run: |
